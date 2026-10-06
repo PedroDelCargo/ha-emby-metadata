@@ -17,6 +17,14 @@ A Home Assistant integration and companion dashboard card for media playing on a
 
 ## Installation
 
+### Before configuring a player
+
+**The target Emby player must be active and connected to your Emby server to be detected.** Open the Emby application on that device, sign in and leave it open during setup. Powering on the device alone is not enough. Detection uses the server's active client sessions, not a list of all previously used devices.
+
+If the player is missing, start playback briefly, then go back to the server connection step and submit it again to refresh the player list. Repeat this preparation when adding another player.
+
+### Install and configure
+
 1. Copy `custom_components/emby_metadata` into your Home Assistant `custom_components` directory.
 2. Restart Home Assistant.
 3. Open **Settings → Devices & services → Add integration → Emby Metadata**.
@@ -29,7 +37,7 @@ A Home Assistant integration and companion dashboard card for media playing on a
 
 In storage mode, the integration creates or updates its resource and removes duplicate entries for its exact endpoint. Existing manual entries at that endpoint are reused. Other URLs are left untouched. YAML resources still require manual updates, using the same URL and `type: module`. Removing or reloading an Emby client keeps the shared card resource.
 
-Once `https://github.com/PedroDelCargo/ha-emby-metadata` is public, it can be installed as a HACS custom repository of type **Integration**. Restart Home Assistant and follow steps 3–5. The project is not yet in the default HACS catalog.
+`https://github.com/PedroDelCargo/ha-emby-metadata` can be installed as a HACS custom repository of type **Integration**. Restart Home Assistant and follow steps 3–5. The project is not yet in the default HACS catalog.
 
 ## Configuration
 
@@ -76,7 +84,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [TRANSLATIONS.md](TRANSLATIONS.md). U
 
 ## Publication status
 
-Prepared for `PedroDelCargo/ha-emby-metadata`. This repository has not yet been published or validated by the remote HACS and Hassfest workflows. See [PUBLISHING.md](PUBLISHING.md).
+Prepared for `PedroDelCargo/ha-emby-metadata`. Release v1.2.9 is published. Automated tests, HACS and Hassfest passed for its release commit. See [PUBLISHING.md](PUBLISHING.md).
 
 ## License
 
