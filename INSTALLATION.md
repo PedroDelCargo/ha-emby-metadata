@@ -4,6 +4,12 @@ Version 1.2.9 : enregistrement et mise à jour automatiques de la ressource de c
 Sans poster visible, la disposition précédente est conservée.
 La carte et le manifeste portent le même numéro : 1.2.9.
 
+## Avant de configurer un lecteur
+
+**Le lecteur Emby ciblé doit être actif et connecté au serveur Emby pour être détecté.** Ouvrir l’application Emby sur cet appareil, se connecter au serveur et laisser l’application ouverte pendant la configuration. Allumer uniquement l’appareil ne suffit pas : la détection utilise les sessions actives du serveur, et non la liste de tous les appareils utilisés auparavant.
+
+Si le lecteur n’apparaît pas, lancer brièvement une lecture, puis revenir à l’étape de connexion au serveur et la valider à nouveau pour actualiser la liste. Ce prérequis s’applique aussi à chaque lecteur supplémentaire.
+
 ## Installation
 
 1. Conserver une copie du dossier actuellement installé.
@@ -19,7 +25,17 @@ Le JavaScript séparé remplace seulement
 `/config/custom_components/emby_metadata/static/emby-metadata-card.js`.
 Pour bénéficier des corrections des personnes et des épisodes, installer l’archive complète.
 
-## Configuration
+## Première configuration de l’intégration
+
+1. Ouvrir Emby sur le lecteur ciblé et le connecter au serveur comme indiqué ci-dessus.
+2. Dans **Paramètres → Appareils et services → Ajouter une intégration**, choisir **Emby Metadata**.
+3. Renseigner le protocole, l’adresse du serveur, le port et la clé API Emby.
+4. Sélectionner le lecteur dans la liste des clients détectés.
+5. Ajouter la carte **Emby Metadata** au tableau de bord et sélectionner le capteur associé à ce lecteur dans l’éditeur visuel.
+
+Pour une mise à jour, conserver la configuration existante : il n’est pas nécessaire de recréer l’intégration.
+
+## Configuration de la carte
 
 Les sections Informations techniques et Distribution sont fermées par défaut.
 Cliquer sur leur titre, ou utiliser Entrée/Espace au clavier, pour les ouvrir.
