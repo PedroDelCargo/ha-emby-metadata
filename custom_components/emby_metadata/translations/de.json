@@ -1,0 +1,31 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Emby-Server",
+        "description": "Gib die Adresse des Emby-Servers und einen API-Schlüssel ein.",
+        "data": {
+          "protocol": "Protokoll",
+          "host": "Serveradresse",
+          "port": "Port",
+          "api_key": "API-Schlüssel"
+        }
+      },
+      "device": {
+        "title": "Emby-Client",
+        "description": "Wähle den Emby-Client aus, der überwacht werden soll.",
+        "data": {
+          "device_id": "Client"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zu Emby nicht möglich.",
+      "invalid_auth": "Der Emby-API-Schlüssel wurde abgelehnt.",
+      "no_devices": "Derzeit sind keine Emby-Clients sichtbar. Starte den Client und versuche es erneut."
+    },
+    "abort": {
+      "already_configured": "Dieser Emby-Client ist bereits konfiguriert."
+    }
+  }
+}

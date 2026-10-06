@@ -1,0 +1,31 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Servidor de Emby",
+        "description": "Introduce la dirección del servidor de Emby y una clave de API.",
+        "data": {
+          "protocol": "Protocolo",
+          "host": "Dirección del servidor",
+          "port": "Puerto",
+          "api_key": "Clave de API"
+        }
+      },
+      "device": {
+        "title": "Cliente de Emby",
+        "description": "Elige el cliente de Emby que quieres supervisar.",
+        "data": {
+          "device_id": "Cliente"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "No se puede conectar con Emby.",
+      "invalid_auth": "Se ha rechazado la clave de API de Emby.",
+      "no_devices": "No hay clientes de Emby visibles en este momento. Inicia el cliente y vuelve a intentarlo."
+    },
+    "abort": {
+      "already_configured": "Este cliente de Emby ya está configurado."
+    }
+  }
+}

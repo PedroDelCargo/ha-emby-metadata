@@ -1,0 +1,18 @@
+{
+  "domain": "emby_metadata",
+  "name": "Emby Metadata",
+  "codeowners": [
+    "@PedroDelCargo"
+  ],
+  "config_flow": true,
+  "integration_type": "hub",
+  "iot_class": "local_polling",
+  "requirements": [],
+  "version": "1.2.9",
+  "documentation": "https://github.com/PedroDelCargo/ha-emby-metadata",
+  "issue_tracker": "https://github.com/PedroDelCargo/ha-emby-metadata/issues",
+  "dependencies": [
+    "http",
+    "lovelace"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Emby server",
+        "description": "Enter the Emby server address and an API key.",
+        "data": {
+          "protocol": "Protocol",
+          "host": "Server address",
+          "port": "Port",
+          "api_key": "API key"
+        }
+      },
+      "device": {
+        "title": "Emby client",
+        "description": "Choose the Emby client to monitor.",
+        "data": {
+          "device_id": "Client"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to connect to Emby.",
+      "invalid_auth": "The Emby API key was rejected.",
+      "no_devices": "No Emby clients are currently visible. Start the client and try again."
+    },
+    "abort": {
+      "already_configured": "This Emby client is already configured."
+    }
+  }
+}
