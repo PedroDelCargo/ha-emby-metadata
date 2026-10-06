@@ -1,3 +1,12 @@
+import sys
+import types
+
+# Minimal HA configuration helpers used by integration setup.
+sys.modules['homeassistant.helpers'] = types.ModuleType('homeassistant.helpers')
+config_validation = types.ModuleType('homeassistant.helpers.config_validation')
+config_validation.config_entry_only_config_schema = lambda domain: domain
+sys.modules['homeassistant.helpers.config_validation'] = config_validation
+
 """Resource lifecycle regression checks with HA collection doubles."""
 import asyncio
 import importlib.util
