@@ -2,7 +2,11 @@
 
 A Home Assistant integration and companion dashboard card for media playing on an Emby client.
 
-![Emby Metadata](custom_components/emby_metadata/brand/icon.png)
+<img src="custom_components/emby_metadata/brand/icon.png" alt="Emby Metadata" width="96">
+
+![Movie on tablet with poster and synopsis](docs/screenshots/tablet-synopsis.jpg)
+
+[Screenshots](#screenshots) · [Installation](#installation) · [Card configuration](#configuration)
 
 ## Features
 
@@ -14,6 +18,48 @@ A Home Assistant integration and companion dashboard card for media playing on a
 - English, French, German and Spanish, following the Home Assistant language.
 - Images served by Home Assistant; the Emby API key stays on the server.
 - Unchanged metadata does not rebuild the card.
+
+## Screenshots
+
+Real screenshots from Home Assistant on mobile and tablet. The examples use the French interface; the card also supports English, German and Spanish. Click an image to view it at full size.
+
+### Mobile
+
+<p>
+  <a href="docs/screenshots/mobile-synopsis-small.jpg"><img src="docs/screenshots/mobile-synopsis-small.jpg" alt="Mobile card with a collapsed synopsis" width="280"></a>
+  <a href="docs/screenshots/mobile-actors.jpg"><img src="docs/screenshots/mobile-actors.jpg" alt="Mobile card with director and cast expanded" width="280"></a>
+</p>
+
+Compact synopsis and expandable cast, with names and roles overlaid on portraits.
+
+<details>
+<summary>More mobile views: full synopsis and technical information</summary>
+
+<p>
+  <a href="docs/screenshots/mobile-synopsis-full.jpg"><img src="docs/screenshots/mobile-synopsis-full.jpg" alt="Mobile card with the full synopsis expanded" width="280"></a>
+  <a href="docs/screenshots/mobile-technical-data.jpg"><img src="docs/screenshots/mobile-technical-data.jpg" alt="Mobile card showing video, audio and subtitle information" width="280"></a>
+</p>
+
+</details>
+
+### TV episodes
+
+![TV episode with series logo, season and episode number, episode title and synopsis](docs/screenshots/tablet-tv-show.jpg)
+
+Series artwork with episode-specific information. The poster is hidden in this example.
+
+<details>
+<summary>More tablet views: technical information and cast</summary>
+
+**Video, audio and subtitles, with the poster enabled**
+
+![Tablet card with technical information expanded](docs/screenshots/tablet-technical-data.jpg)
+
+**Director and cast, with the poster hidden**
+
+![Tablet card with director and cast expanded](docs/screenshots/tablet-actors.jpg)
+
+</details>
 
 ## Installation
 
@@ -40,6 +86,17 @@ In storage mode, the integration creates or updates its resource and removes dup
 `https://github.com/PedroDelCargo/ha-emby-metadata` can be installed as a HACS custom repository of type **Integration**. Restart Home Assistant and follow steps 3–5. The project is not yet in the default HACS catalog.
 
 ## Configuration
+
+Choose the player's sensor and toggle the poster, video, audio, subtitles and cast directly in Home Assistant's visual card editor.
+
+<details>
+<summary>View the visual card editor</summary>
+
+<a href="docs/screenshots/configuration.jpg"><img src="docs/screenshots/configuration.jpg" alt="Home Assistant visual editor for the Emby Metadata card" width="560"></a>
+
+</details>
+
+You can also configure the card in YAML:
 
 ```yaml
 type: custom:emby-metadata-card
@@ -89,3 +146,4 @@ Prepared for `PedroDelCargo/ha-emby-metadata`. Release v1.2.9 is published. Auto
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
