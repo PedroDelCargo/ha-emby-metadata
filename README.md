@@ -25,20 +25,22 @@ Real screenshots from Home Assistant on mobile and tablet. The examples use the 
 
 ### Mobile
 
-<p>
+<table><tr><td valign="top">
   <a href="docs/screenshots/mobile-synopsis-small.jpg"><img src="docs/screenshots/mobile-synopsis-small.jpg" alt="Mobile card with a collapsed synopsis" width="280"></a>
+</td><td valign="top">
   <a href="docs/screenshots/mobile-actors.jpg"><img src="docs/screenshots/mobile-actors.jpg" alt="Mobile card with director and cast expanded" width="280"></a>
-</p>
+</td></tr></table>
 
 Compact synopsis and expandable cast, with names and roles overlaid on portraits.
 
 <details>
 <summary>More mobile views: full synopsis and technical information</summary>
 
-<p>
+<table><tr><td valign="top">
   <a href="docs/screenshots/mobile-synopsis-full.jpg"><img src="docs/screenshots/mobile-synopsis-full.jpg" alt="Mobile card with the full synopsis expanded" width="280"></a>
+</td><td valign="top">
   <a href="docs/screenshots/mobile-technical-data.jpg"><img src="docs/screenshots/mobile-technical-data.jpg" alt="Mobile card showing video, audio and subtitle information" width="280"></a>
-</p>
+</td></tr></table>
 
 </details>
 
