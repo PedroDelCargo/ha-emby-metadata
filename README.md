@@ -91,12 +91,7 @@ In storage mode, the integration creates or updates its resource and removes dup
 
 Choose the player's sensor and toggle the poster, video, audio, subtitles and cast directly in Home Assistant's visual card editor.
 
-<details>
-<summary>View the visual card editor</summary>
-
 <a href="docs/screenshots/configuration.jpg"><img src="docs/screenshots/configuration.jpg" alt="Home Assistant visual editor for the Emby Metadata card" width="560"></a>
-
-</details>
 
 You can also configure the card in YAML:
 
@@ -135,7 +130,7 @@ All players share a single JavaScript resource. Do not add another resource or i
 
 ## Compatibility
 
-The project owner has tested movies, episodes and personal videos. Tested on Home Assistant Core **2026.9.4**, frontend **20260826.7**. Earlier versions have not been verified. Automated browser tests cover layout, localization and interactions. Backend tests use Home Assistant and HTTP doubles. The owner also confirmed automatic upgrading of an existing card resource and automatic recreation after deleting it and restarting Home Assistant.
+The project owner has tested movies, episodes and personal videos, and confirmed that a fresh installation works. Tested on Home Assistant Core **2026.9.4**, frontend **20260826.7**. Earlier versions have not been verified. Automated browser tests cover layout, localization and interactions. Backend tests use Home Assistant and HTTP doubles. The owner also confirmed automatic upgrading of an existing card resource and automatic recreation after deleting it and restarting Home Assistant.
 
 ## Contributing
 
