@@ -2,9 +2,9 @@
 
 A Home Assistant integration and companion dashboard card for media playing on an Emby client.
 
-<img src="custom_components/emby_metadata/brand/icon.png" alt="Emby Metadata" width="96">
+![Emby Metadata](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/custom_components/emby_metadata/brand/icon.png)
 
-![Movie on tablet with poster and synopsis](docs/screenshots/tablet-synopsis.jpg)
+![Movie on tablet with poster and synopsis](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-synopsis.jpg)
 
 [Screenshots](#screenshots) · [Installation](#installation) · [Card configuration](#configuration)
 
@@ -25,43 +25,33 @@ Real screenshots from Home Assistant on mobile and tablet. The examples use the 
 
 ### Mobile
 
-<table><tr><td valign="top">
-  <a href="docs/screenshots/mobile-synopsis-small.jpg"><img src="docs/screenshots/mobile-synopsis-small.jpg" alt="Mobile card with a collapsed synopsis" width="280"></a>
-</td><td valign="top">
-  <a href="docs/screenshots/mobile-actors.jpg"><img src="docs/screenshots/mobile-actors.jpg" alt="Mobile card with director and cast expanded" width="280"></a>
-</td></tr></table>
+  ![Mobile card with a collapsed synopsis](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-small.jpg)
+
+  ![Mobile card with director and cast expanded](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-actors.jpg)
 
 Compact synopsis and expandable cast, with names and roles overlaid on portraits.
 
-<details>
-<summary>More mobile views: full synopsis and technical information</summary>
+**More mobile views: full synopsis and technical information**
 
-<table><tr><td valign="top">
-  <a href="docs/screenshots/mobile-synopsis-full.jpg"><img src="docs/screenshots/mobile-synopsis-full.jpg" alt="Mobile card with the full synopsis expanded" width="280"></a>
-</td><td valign="top">
-  <a href="docs/screenshots/mobile-technical-data.jpg"><img src="docs/screenshots/mobile-technical-data.jpg" alt="Mobile card showing video, audio and subtitle information" width="280"></a>
-</td></tr></table>
+  ![Mobile card with the full synopsis expanded](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-full.jpg)
 
-</details>
+  ![Mobile card showing video, audio and subtitle information](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-technical-data.jpg)
 
 ### TV episodes
 
-![TV episode with series logo, season and episode number, episode title and synopsis](docs/screenshots/tablet-tv-show.jpg)
+![TV episode with series logo, season and episode number, episode title and synopsis](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-tv-show.jpg)
 
 Series artwork with episode-specific information. The poster is hidden in this example.
 
-<details>
-<summary>More tablet views: technical information and cast</summary>
+**More tablet views: technical information and cast**
 
 **Video, audio and subtitles, with the poster enabled**
 
-![Tablet card with technical information expanded](docs/screenshots/tablet-technical-data.jpg)
+![Tablet card with technical information expanded](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-technical-data.jpg)
 
 **Director and cast, with the poster hidden**
 
-![Tablet card with director and cast expanded](docs/screenshots/tablet-actors.jpg)
-
-</details>
+![Tablet card with director and cast expanded](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-actors.jpg)
 
 ## Installation
 
@@ -80,18 +70,24 @@ If the player is missing, start playback briefly, then go back to the server con
 5. The card resource is registered automatically when resources are managed through the UI. Reload the browser after restarting. For YAML-managed resources, add this URL as a **JavaScript module**:
 
 ```text
-/api/emby_metadata/emby-metadata-card.js?v=1.2.9
+/api/emby_metadata/emby-metadata-card.js?v=1.2.11
 ```
 
 In storage mode, the integration creates or updates its resource and removes duplicate entries for its exact endpoint. Existing manual entries at that endpoint are reused. Other URLs are left untouched. YAML resources still require manual updates, using the same URL and `type: module`. Removing or reloading an Emby client keeps the shared card resource.
 
 `https://github.com/PedroDelCargo/ha-emby-metadata` can be installed as a HACS custom repository of type **Integration**. Restart Home Assistant and follow steps 3–5. The project is not yet in the default HACS catalog.
 
+## Card appearance
+
+The card preserves the v1.2.9 appearance. Only the outer corner radius follows the Home Assistant theme (`ha-card-border-radius`, falling back to `ha-border-radius-lg` and then 12 px), with 1 px padding on the main card container.
+
+HACS displays documentation from the installed release, which may differ from GitHub's default branch. Update to the release containing these changes to see its updated presentation in HACS. The README uses standard Markdown and absolute image URLs for both renderers; their surrounding layout may still differ.
+
 ## Configuration
 
 Choose the player's sensor and toggle the poster, video, audio, subtitles and cast directly in Home Assistant's visual card editor.
 
-<a href="docs/screenshots/configuration.jpg"><img src="docs/screenshots/configuration.jpg" alt="Home Assistant visual editor for the Emby Metadata card" width="560"></a>
+![Home Assistant visual editor for the Emby Metadata card](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration.jpg)
 
 You can also configure the card in YAML:
 
@@ -138,7 +134,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [TRANSLATIONS.md](TRANSLATIONS.md). U
 
 ## Publication status
 
-Prepared for `PedroDelCargo/ha-emby-metadata`. Release v1.2.9 is published. Automated tests, HACS and Hassfest passed for its release commit. See [PUBLISHING.md](PUBLISHING.md).
+Prepared for `PedroDelCargo/ha-emby-metadata`. Version 1.2.11 preserves the v1.2.9 appearance with theme corner radius and 1 px padding. The project owner confirmed the theme radius on Home Assistant. See [PUBLISHING.md](PUBLISHING.md).
 
 ## License
 

@@ -1,13 +1,15 @@
-# Emby Metadata v1.2.9
+# Emby Metadata v1.2.11
 
-Home Assistant integration and companion dashboard card for Emby movies, TV episodes and personal videos.
+Preserves the v1.2.9 card appearance with the Home Assistant theme corner radius and 1 px main card padding. Tested by the maintainer on Home Assistant, including the theme radius. The broader styling from the unpublished v1.2.10 test build is not included.
 
-- Responsive card with optional poster, backdrop, synopsis, rating and runtime.
-- Technical details and cast in animated collapsible sections.
-- English, French, German and Spanish interface translations.
-- Automatic card resource registration and version updates for UI-managed resources.
-- One integration entry per Emby player, sharing one JavaScript resource.
+This release includes the mobile/tablet screenshot gallery, visual editor screenshot, active-player setup instructions and confirmation of a successful fresh installation. The README uses standard Markdown and absolute image URLs for HACS.
 
-Tested by the maintainer on Home Assistant Core 2026.9.4, frontend 20260826.7, including automatic resource upgrade and recreation after restart. YAML-managed resources still require manual configuration.
+## Updating
 
-See README.md for installation. This release is intended for manual installation and testing as a HACS custom integration repository; it is not yet listed in the default HACS catalog.
+Update through HACS, restart Home Assistant and fully refresh the dashboard. UI-managed card resources update automatically. For YAML-managed resources use `/api/emby_metadata/emby-metadata-card.js?v=1.2.11` as a JavaScript module.
+
+For first setup or an additional player, open Emby on the device, sign in and leave it connected so the server can detect it. Start playback briefly if the player is missing.
+
+[Installation and configuration](https://github.com/PedroDelCargo/ha-emby-metadata/blob/v1.2.11/README.md)
+
+Available as a HACS custom repository. Default catalog submission has not yet been made.
