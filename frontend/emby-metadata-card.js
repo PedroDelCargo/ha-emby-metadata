@@ -1,4 +1,4 @@
-/* Emby Metadata Card - Home Assistant custom card - V1.2.9 */
+/* Emby Metadata Card - Home Assistant custom card - V1.2.11 */
 
 // Card translations are bundled to keep the standalone JS self-contained.
 // Edit frontend/translations/<language>.json, then run scripts/build_card.py.
@@ -691,7 +691,8 @@ class EmbyMetadataCard extends HTMLElement {
 
       .card {
         overflow: hidden;
-        border-radius: 16px;
+        border-radius: var(--ha-card-border-radius, var(--ha-border-radius-lg, 12px));
+        padding: 1px;
         background: #000;
         color: #fff;
         box-shadow: var(--ha-card-box-shadow, none);
