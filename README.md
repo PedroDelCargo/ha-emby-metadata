@@ -79,12 +79,6 @@ In storage mode, the integration creates or updates its resource and removes dup
 
 `https://github.com/PedroDelCargo/ha-emby-metadata` can be installed as a HACS custom repository of type **Integration**. Restart Home Assistant and follow steps 3–5. The project is not yet in the default HACS catalog.
 
-## Card appearance
-
-The card preserves the v1.2.9 appearance. Only the outer corner radius follows the Home Assistant theme (`ha-card-border-radius`, falling back to `ha-border-radius-lg` and then 12 px), with 1 px padding on the main card container.
-
-HACS displays documentation from the installed release, which may differ from GitHub's default branch. Update to the release containing these changes to see its updated presentation in HACS. Screenshot previews have explicit widths and link to the original images. GitHub and HACS may use different surrounding layouts.
-
 ## Configuration
 
 Choose the player's sensor and toggle the poster, video, audio, subtitles and cast directly in Home Assistant's visual card editor.
@@ -139,7 +133,7 @@ All players share a single JavaScript resource. Do not add another resource or i
 
 ## Compatibility
 
-The project owner has tested movies, episodes and personal videos, and confirmed that a fresh installation works. Tested on Home Assistant Core **2026.9.4**, frontend **20260826.7**. Earlier versions have not been verified. Automated browser tests cover layout, localization and interactions. Backend tests use Home Assistant and HTTP doubles. The owner also confirmed automatic upgrading of an existing card resource and automatic recreation after deleting it and restarting Home Assistant.
+Tested on Home Assistant Core **2026.9.4**, frontend **20260826.7**. Earlier versions have not been verified.
 
 ## Contributing
 
@@ -147,7 +141,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [TRANSLATIONS.md](TRANSLATIONS.md). U
 
 ## Publication status
 
-Prepared for `PedroDelCargo/ha-emby-metadata`. Version 1.2.11 preserves the v1.2.9 appearance with theme corner radius and 1 px padding. The project owner confirmed the theme radius on Home Assistant. See [PUBLISHING.md](PUBLISHING.md).
+Available as a HACS custom repository. [Default catalog submission](https://github.com/hacs/default/pull/11725) is awaiting review.
 
 ## License
 

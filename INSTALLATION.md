@@ -43,13 +43,6 @@ L’état est conservé pendant les mises à jour du même média et réinitiali
 changement de média. Une section sans données ou désactivée dans les options
 n’apparaît pas.
 
-Le CSS reprend les ajustements fournis par l’utilisateur : portraits de 150 px
-maximum, trois colonnes sur petit écran et six à partir de 768 px. Le titre et
-les genres restent en haut ; durée et note sont positionnées au bas du bloc
-d’introduction, juste avant le synopsis. Les légendes des portraits sont intégrées
-sur un bandeau noir à 60 %. Une silhouette discrète reste visible en l’absence
-de photo ou en cas d’échec du chargement.
-
 ```yaml
 type: custom:emby-metadata-card
 entity: sensor.emby_metadata_shield_tv
@@ -123,6 +116,10 @@ est déjà généré et contient les traductions.
 - Position de lecture et données utilisateur exclues de la comparaison. À données
   identiques, la carte garde ses éléments et son synopsis ouvert. Le renouvellement
   du jeton d’image HA ne reconstruit pas la carte ; un changement d’image l’invalide.
+
+## Compatibilité
+
+Testé avec Home Assistant Core **2026.9.4**, interface **20260826.7**. Les versions antérieures n’ont pas été vérifiées.
 
 ## Après installation
 
