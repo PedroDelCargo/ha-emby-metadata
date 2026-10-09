@@ -74,7 +74,7 @@ Si le lecteur n’apparaît pas, lancez brièvement une lecture, puis revenez à
 5. La ressource de la carte est enregistrée automatiquement lorsque les ressources sont gérées par l’interface. Rechargez le navigateur après le redémarrage. Pour les ressources gérées en YAML, ajoutez cette URL comme **module JavaScript** :
 
 ```text
-/api/emby_metadata/emby-metadata-card.js?v=1.2.12
+/api/emby_metadata/emby-metadata-card.js?v=1.2.13
 ```
 
 En mode stockage, l’intégration crée ou met à jour sa ressource et supprime les doublons correspondant exactement à son adresse. Les entrées manuelles existantes à cette adresse sont réutilisées. Les autres URL ne sont pas modifiées. Les ressources YAML nécessitent toujours une mise à jour manuelle, avec la même URL et `type: module`. Supprimer ou recharger un client Emby conserve la ressource partagée de la carte.

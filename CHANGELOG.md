@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.13 — 2026-10-09
+
+- Align the English and French guides, including screenshots and configuration examples.
+- Explain that the bundled card is optional and document custom dashboards using each client’s sensor and image entities.
+- Simplify presentation and compatibility information; add language navigation links.
+- No changes to integration or card behavior.
+
 ## 1.2.12 — 2026-10-09
 
 - Compact screenshot previews with links to full-size originals in the README.
