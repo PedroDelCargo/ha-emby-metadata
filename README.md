@@ -2,9 +2,9 @@
 
 A Home Assistant integration and companion dashboard card for media playing on an Emby client.
 
-![Emby Metadata](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/custom_components/emby_metadata/brand/icon.png)
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/custom_components/emby_metadata/brand/icon.png"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/custom_components/emby_metadata/brand/icon.png" alt="Emby Metadata" width="128"></a>
 
-![Movie on tablet with poster and synopsis](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-synopsis.jpg)
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-synopsis.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-synopsis.jpg" alt="Movie on tablet with poster and synopsis" width="640"></a>
 
 [Screenshots](#screenshots) · [Installation](#installation) · [Card configuration](#configuration)
 
@@ -25,21 +25,21 @@ Real screenshots from Home Assistant on mobile and tablet. The examples use the 
 
 ### Mobile
 
-  ![Mobile card with a collapsed synopsis](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-small.jpg)
+  <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-small.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-small.jpg" alt="Mobile card with a collapsed synopsis" width="280"></a>
 
-  ![Mobile card with director and cast expanded](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-actors.jpg)
+  <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-actors.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-actors.jpg" alt="Mobile card with director and cast expanded" width="280"></a>
 
 Compact synopsis and expandable cast, with names and roles overlaid on portraits.
 
 **More mobile views: full synopsis and technical information**
 
-  ![Mobile card with the full synopsis expanded](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-full.jpg)
+  <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-full.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-full.jpg" alt="Mobile card with the full synopsis expanded" width="280"></a>
 
-  ![Mobile card showing video, audio and subtitle information](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-technical-data.jpg)
+  <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-technical-data.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-technical-data.jpg" alt="Mobile card showing video, audio and subtitle information" width="280"></a>
 
 ### TV episodes
 
-![TV episode with series logo, season and episode number, episode title and synopsis](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-tv-show.jpg)
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-tv-show.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-tv-show.jpg" alt="TV episode with series logo, season and episode number, episode title and synopsis" width="640"></a>
 
 Series artwork with episode-specific information. The poster is hidden in this example.
 
@@ -47,11 +47,11 @@ Series artwork with episode-specific information. The poster is hidden in this e
 
 **Video, audio and subtitles, with the poster enabled**
 
-![Tablet card with technical information expanded](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-technical-data.jpg)
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-technical-data.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-technical-data.jpg" alt="Tablet card with technical information expanded" width="640"></a>
 
 **Director and cast, with the poster hidden**
 
-![Tablet card with director and cast expanded](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-actors.jpg)
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-actors.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-actors.jpg" alt="Tablet card with director and cast expanded" width="280"></a>
 
 ## Installation
 
@@ -70,7 +70,7 @@ If the player is missing, start playback briefly, then go back to the server con
 5. The card resource is registered automatically when resources are managed through the UI. Reload the browser after restarting. For YAML-managed resources, add this URL as a **JavaScript module**:
 
 ```text
-/api/emby_metadata/emby-metadata-card.js?v=1.2.11
+/api/emby_metadata/emby-metadata-card.js?v=1.2.12
 ```
 
 In storage mode, the integration creates or updates its resource and removes duplicate entries for its exact endpoint. Existing manual entries at that endpoint are reused. Other URLs are left untouched. YAML resources still require manual updates, using the same URL and `type: module`. Removing or reloading an Emby client keeps the shared card resource.
@@ -81,13 +81,13 @@ In storage mode, the integration creates or updates its resource and removes dup
 
 The card preserves the v1.2.9 appearance. Only the outer corner radius follows the Home Assistant theme (`ha-card-border-radius`, falling back to `ha-border-radius-lg` and then 12 px), with 1 px padding on the main card container.
 
-HACS displays documentation from the installed release, which may differ from GitHub's default branch. Update to the release containing these changes to see its updated presentation in HACS. The README uses standard Markdown and absolute image URLs for both renderers; their surrounding layout may still differ.
+HACS displays documentation from the installed release, which may differ from GitHub's default branch. Update to the release containing these changes to see its updated presentation in HACS. Screenshot previews have explicit widths and link to the original images. GitHub and HACS may use different surrounding layouts.
 
 ## Configuration
 
 Choose the player's sensor and toggle the poster, video, audio, subtitles and cast directly in Home Assistant's visual card editor.
 
-![Home Assistant visual editor for the Emby Metadata card](https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration.jpg)
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration.jpg" alt="Home Assistant visual editor for the Emby Metadata card" width="280"></a>
 
 You can also configure the card in YAML:
 
