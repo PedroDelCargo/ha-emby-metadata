@@ -1,6 +1,8 @@
 # Emby Metadata
 
-A Home Assistant integration and companion dashboard card for media playing on an Emby client.
+A Home Assistant integration for media playing on an Emby client, with an optional companion dashboard card.
+
+**Use the included card or build your own dashboard.** Each configured Emby client has its own metadata sensor and image entities, which you can use in other Home Assistant cards and custom layouts.
 
 <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/custom_components/emby_metadata/brand/icon.png"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/custom_components/emby_metadata/brand/icon.png" alt="Emby Metadata" width="128"></a>
 
@@ -102,6 +104,17 @@ show_cast: true
 ```
 
 Replace the example entity with your sensor. These options are also available in the visual editor. Poster display applies to horizontal layout. Empty sections are hidden. Media titles, plots, genres and roles remain in the language provided by Emby.
+
+## Build your own dashboard
+
+The included Emby Metadata card is optional. The integration provides entities for each configured Emby client, so you can create your own presentation using Home Assistant cards that support those entities and attributes.
+
+- **Now Playing sensor:** the current title and attributes such as synopsis, genres, year, runtime, ratings, series/season/episode details, video/audio/subtitle information, director and actors.
+- **Image entities:** poster, backdrop, title logo, director portrait and five actor portraits, depending on the images available in Emby.
+
+Find these entities under **Settings → Devices & services → Emby Metadata**, then open the relevant client device. Inspect the sensor attributes in **Developer tools → States**. Entity IDs depend on your installation; use the IDs shown in your own Home Assistant.
+
+The sensor also exposes `poster_entity`, `backdrop_entity` and `logo_entity`. When people are available, `director` and the entries in `actors` contain their names, roles and `image_entity` references. Metadata depends on what Emby supplies, and image entities may be unavailable when no matching image exists.
 
 ## Multiple Emby players
 
