@@ -1,5 +1,7 @@
 # Emby Metadata
 
+[English](README.md) · [Français](INSTALLATION.md)
+
 A Home Assistant integration for media playing on an Emby client, with an optional companion dashboard card.
 
 **Use the included card or build your own dashboard.** Each configured Emby client has its own metadata sensor and image entities, which you can use in other Home Assistant cards and custom layouts.
@@ -137,7 +139,7 @@ Tested on Home Assistant Core **2026.9.4**, frontend **20260826.7**. Earlier ver
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [TRANSLATIONS.md](TRANSLATIONS.md). Users do not need to build the bundled JavaScript. Detailed French installation instructions are in [INSTALLATION.md](INSTALLATION.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [TRANSLATIONS.md](TRANSLATIONS.md). Users do not need to build the bundled JavaScript. The French version of this guide is available in [INSTALLATION.md](INSTALLATION.md).
 
 ## Publication status
 
