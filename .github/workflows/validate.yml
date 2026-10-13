@@ -17,7 +17,9 @@ jobs:
         with:
           node-version: '22'
       - run: python scripts/build_card.py --check
+      - run: pip install voluptuous
       - run: python tests/test_backend.py
+      - run: python tests/test_polling.py
       - run: python tests/test_resources.py
       - run: python tests/test_translation_build.py
       - run: npm install --no-save playwright
