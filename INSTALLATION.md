@@ -74,7 +74,7 @@ Si le lecteur n’apparaît pas, lancez brièvement une lecture, puis revenez à
 5. La ressource de la carte est enregistrée automatiquement lorsque les ressources sont gérées par l’interface. Rechargez le navigateur après le redémarrage. Pour les ressources gérées en YAML, ajoutez cette URL comme **module JavaScript** :
 
 ```text
-/api/emby_metadata/emby-metadata-card.js?v=1.2.13
+/api/emby_metadata/emby-metadata-card.js?v=1.2.14
 ```
 
 En mode stockage, l’intégration crée ou met à jour sa ressource et supprime les doublons correspondant exactement à son adresse. Les entrées manuelles existantes à cette adresse sont réutilisées. Les autres URL ne sont pas modifiées. Les ressources YAML nécessitent toujours une mise à jour manuelle, avec la même URL et `type: module`. Supprimer ou recharger un client Emby conserve la ressource partagée de la carte.
@@ -111,6 +111,20 @@ La carte Emby Metadata fournie est facultative. L’intégration crée des entit
 Retrouvez ces entités dans **Paramètres → Appareils et services → Emby Metadata**, puis ouvrez l’appareil correspondant au client. Consultez les attributs du capteur dans **Outils de développement → États**. Les identifiants d’entités dépendent de votre installation : utilisez ceux affichés dans votre Home Assistant.
 
 Le capteur expose aussi `poster_entity`, `backdrop_entity` et `logo_entity`. Lorsque des personnes sont disponibles, `director` et les entrées de `actors` contiennent leurs noms, rôles et références `image_entity`. Les métadonnées dépendent des informations fournies par Emby ; les entités images peuvent être indisponibles lorsqu’aucune image correspondante n’existe.
+
+## Délais de vérification
+
+Ouvrez **Paramètres → Appareils et services → Emby Metadata**, puis la configuration/les options du lecteur concerné. Les délais sont réglables de **5 à 300 secondes**, en secondes entières :
+
+| État du lecteur | Valeur par défaut |
+| --- | --- |
+| Connecté, sans lecture | 5 secondes |
+| En lecture ou en pause | 5 secondes |
+| Absent des sessions Emby | 30 secondes |
+
+Les changements s’appliquent immédiatement, sans redémarrer Home Assistant. Les lecteurs déjà configurés reçoivent automatiquement ces valeurs par défaut. Les lecteurs utilisant la même adresse de serveur et la même clé API partagent une seule requête de sessions, au délai le plus court requis par leurs états actuels. Les adresses de serveur ou clés API différentes sont traitées séparément. Des délais plus courts augmentent les requêtes ; les caches des métadonnées et des images restent actifs.
+
+Il s’agit de délais de vérification, pas d’une garantie sur le temps total d’affichage : Emby doit d’abord signaler la lecture, puis les métadonnées et images doivent être chargées. Si vous ouvrez l’application Emby et démarrez un film en même temps, le délai du lecteur absent peut encore affecter la détection. Essayez de le réduire à 10 secondes si nécessaire. Après une erreur de connexion au serveur, les vérifications des sessions reprennent après 30 secondes.
 
 ## Plusieurs lecteurs Emby
 

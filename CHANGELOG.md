@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.14 — 2026-10-13
+
+- Check connected idle clients every 5 seconds by default instead of 30.
+- Add live per-client options for idle, playing/paused and absent intervals (5–300 seconds).
+- Share session polling for clients with the same server address and API key, using the shortest required interval.
+- Retain metadata/image caching and unchanged-data suppression; limit concurrent metadata requests per server.
+- Translate options into English, French, German and Spanish.
+
 ## 1.2.13 — 2026-10-09
 
 - Align the English and French guides, including screenshots and configuration examples.

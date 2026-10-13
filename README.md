@@ -74,7 +74,7 @@ If the player is missing, start playback briefly, then go back to the server con
 5. The card resource is registered automatically when resources are managed through the UI. Reload the browser after restarting. For YAML-managed resources, add this URL as a **JavaScript module**:
 
 ```text
-/api/emby_metadata/emby-metadata-card.js?v=1.2.13
+/api/emby_metadata/emby-metadata-card.js?v=1.2.14
 ```
 
 In storage mode, the integration creates or updates its resource and removes duplicate entries for its exact endpoint. Existing manual entries at that endpoint are reused. Other URLs are left untouched. YAML resources still require manual updates, using the same URL and `type: module`. Removing or reloading an Emby client keeps the shared card resource.
@@ -111,6 +111,20 @@ The included Emby Metadata card is optional. The integration provides entities f
 Find these entities under **Settings → Devices & services → Emby Metadata**, then open the relevant client device. Inspect the sensor attributes in **Developer tools → States**. Entity IDs depend on your installation; use the IDs shown in your own Home Assistant.
 
 The sensor also exposes `poster_entity`, `backdrop_entity` and `logo_entity`. When people are available, `director` and the entries in `actors` contain their names, roles and `image_entity` references. Metadata depends on what Emby supplies, and image entities may be unavailable when no matching image exists.
+
+## Refresh intervals
+
+Open **Settings → Devices & services → Emby Metadata**, then open the configuration/options for the relevant client. Intervals can be changed from **5 to 300 seconds**, in whole seconds:
+
+| Client state | Default |
+| --- | --- |
+| Connected, not playing | 5 seconds |
+| Playing or paused | 5 seconds |
+| Absent from Emby sessions | 30 seconds |
+
+Changes apply immediately, without restarting Home Assistant. Existing clients receive these defaults automatically. Clients using the same server address and API key share one session request at the shortest interval needed by their current states. Different server addresses or API keys are handled separately. Shorter intervals increase requests; metadata and image caches remain enabled.
+
+These are checking intervals, not a guarantee of total display time: Emby must first report playback, and metadata and images must then load. If you open the Emby application and start a movie together, the absent-client interval can still affect detection. Try reducing it to 10 seconds if needed. After a server connection failure, session checks retry after 30 seconds.
 
 ## Multiple Emby players
 
