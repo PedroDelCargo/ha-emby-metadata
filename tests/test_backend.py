@@ -19,9 +19,41 @@ def module(name, **attrs):
 class Coordinator:
     def __class_getitem__(cls, item): return cls
     def __init__(self, *args, **kwargs):
-        self.data = {}
+        self.data = None
+        self.hass = args[0] if args else None
+        self.update_interval = kwargs.get("update_interval")
+        self.listeners = []
+        self.last_exception = None
         self.last_update_success = True
         self.options = kwargs
+
+    async def async_refresh(self):
+        try:
+            data = await self._async_update_data()
+        except Exception as err:
+            self.last_exception = err
+            self.last_update_success = False
+            for listener in list(self.listeners): listener()
+        else:
+            self.async_set_updated_data(data)
+
+    def async_set_updated_data(self, data):
+        changed = not self.last_update_success or data != self.data
+        self.data = data
+        self.last_update_success = True
+        if changed or self.options.get('always_update', True):
+            for listener in list(self.listeners): listener()
+
+    def async_add_listener(self, listener):
+        self.listeners.append(listener)
+        return lambda: self.listeners.remove(listener)
+
+    async def async_shutdown(self): pass
+    async def async_register_shutdown(self): pass
+    async def async_request_refresh(self): await self.async_refresh()
+    async def async_config_entry_first_refresh(self):
+        await self.async_refresh()
+        if not self.last_update_success: raise self.last_exception
 
 class Entity:
     def __class_getitem__(cls, item): return cls
@@ -36,7 +68,9 @@ class Image:
 for name in ['homeassistant','homeassistant.helpers','homeassistant.components']:
     module(name)
 module('homeassistant.config_entries', ConfigEntry=object)
-module('homeassistant.core', HomeAssistant=object)
+module('homeassistant.core', HomeAssistant=object, callback=lambda fn: fn)
+module('homeassistant.exceptions', ConfigEntryNotReady=type('ConfigEntryNotReady',(Exception,),{}), HomeAssistantError=Exception)
+module('homeassistant.helpers.debounce', Debouncer=lambda *a, **kw: None)
 module('homeassistant.const', Platform=types.SimpleNamespace(SENSOR='sensor', IMAGE='image'))
 module('homeassistant.helpers.aiohttp_client', async_get_clientsession=lambda hass: hass)
 module('homeassistant.helpers.update_coordinator', DataUpdateCoordinator=Coordinator, CoordinatorEntity=Entity, UpdateFailed=RuntimeError)
@@ -56,7 +90,7 @@ DIRECTOR={'Id':'d','Name':'Director','Type':'Director'}
 ACTOR={'Id':'a','Name':'Actor','Type':'Actor','Role':'Pilot','PrimaryImageTag':'face'}
 EPISODE={'Id':'e1','Type':'Episode','Name':'Arrival','SeriesId':'series','SeasonId':'season','ParentIndexNumber':0,'IndexNumber':1,'Overview':'Episode overview','ImageTags':{'Primary':'still'},'People':[DIRECTOR]}
 SERIES={'Id':'series','Name':'The Series','Overview':'Series overview','ImageTags':{'Primary':'poster','Logo':'logo'},'BackdropImageTags':['background'],'People':[ACTOR]}
-ENTRY=types.SimpleNamespace(entry_id='test',data={'protocol':'http','host':'server','port':8096,'api_key':'secret','device_id':'device','device_name':'Shield'})
+ENTRY=types.SimpleNamespace(entry_id='test',options={},data={'protocol':'http','host':'server','port':8096,'api_key':'secret','device_id':'device','device_name':'Shield'})
 
 class Response:
     def __init__(self, status=200, data=None): self.status,self.data=status,data
@@ -66,10 +100,16 @@ class Response:
 
 class Session:
     def __init__(self, responses): self.responses=list(responses); self.calls=[]
+    def async_create_task(self, coro): return asyncio.create_task(coro)
     def get(self,url,**kw):
         self.calls.append((url,kw))
         if not self.responses: raise AssertionError('Unexpected request '+url)
         return self.responses.pop(0)
+
+def make_coordinator(session, entry=ENTRY, source=None):
+    source = source or coordinator.EmbySessionsCoordinator(session, entry)
+    source.clients[entry.entry_id] = entry
+    return coordinator.EmbyCoordinator(session, entry, source)
 
 class Tests(unittest.IsolatedAsyncioTestCase):
     def test_syntax_and_json(self):
@@ -127,7 +167,7 @@ class Tests(unittest.IsolatedAsyncioTestCase):
 
     async def test_documented_endpoint_and_cache(self):
         session=Session([Response(data=EPISODE)])
-        c=coordinator.EmbyCoordinator(session,ENTRY)
+        c=make_coordinator(session)
         self.assertEqual(await c._item_details('e1','u'),EPISODE)
         self.assertEqual(await c._item_details('e1','u'),EPISODE)
         self.assertEqual(len(session.calls),1)
@@ -136,31 +176,35 @@ class Tests(unittest.IsolatedAsyncioTestCase):
 
     async def test_list_endpoint_fallback(self):
         session=Session([Response(404),Response(data={'Items':[EPISODE]})])
-        c=coordinator.EmbyCoordinator(session,ENTRY)
+        c=make_coordinator(session)
         self.assertEqual(await c._item_details('e1','u'),EPISODE)
         self.assertTrue(session.calls[1][0].endswith('/Items'))
         self.assertEqual(session.calls[1][1]['params']['Ids'],'e1')
 
     async def test_transient_detail_failure_preserves_data(self):
         session=Session([Response(500),Response(500)])
-        c=coordinator.EmbyCoordinator(session,ENTRY)
+        c=make_coordinator(session)
         c._details_cache[('u','e1')]=(0,EPISODE)
         self.assertEqual(await c._item_details('e1','u'),EPISODE)
 
     async def test_poll_equality_and_enrichment(self):
         active={'DeviceId':'device','UserId':'u','NowPlayingItem':EPISODE,'PlayState':{'PositionTicks':1,'SubtitleStreamIndex':-1}}
         session=Session([Response(data=[active]),Response(data=EPISODE),Response(data=SERIES),Response(data={'Id':'season'}),Response(data=[active | {'PlayState':{'PositionTicks':999,'SubtitleStreamIndex':-1}}])])
-        c=coordinator.EmbyCoordinator(session,ENTRY)
-        first=await c._async_update_data(); second=await c._async_update_data()
+        c=make_coordinator(session)
+        await c.sessions.async_refresh()
+        first=await c._async_update_data()
+        await c.sessions.async_refresh()
+        second=await c._async_update_data()
         self.assertEqual(first,second)
         self.assertEqual(first['NowPlayingItem']['SeriesName'],'The Series')
-        self.assertEqual(c.update_interval.total_seconds(),5)
+        self.assertEqual(c.sessions.update_interval.total_seconds(),5)
         self.assertFalse(c.options['always_update'])
 
     async def test_idle_interval_and_disconnect(self):
-        c=coordinator.EmbyCoordinator(Session([Response(data=[])]),ENTRY)
+        c=make_coordinator(Session([Response(data=[])]))
+        await c.sessions.async_refresh()
         self.assertIsNone((await c._async_update_data())['NowPlayingItem'])
-        self.assertEqual(c.update_interval.total_seconds(),30)
+        self.assertEqual(c.sessions.update_interval.total_seconds(),30)
 
     def test_sensor_registry_and_episode_attributes(self):
         c=Coordinator(); c.data={'NowPlayingItem':metadata.normalize_item(EPISODE,series=SERIES)}

@@ -14,7 +14,7 @@ from pathlib import Path
 import sys
 from types import ModuleType, SimpleNamespace
 import unittest
-from unittest.mock import AsyncMock
+from unittest.mock import AsyncMock, Mock
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -111,7 +111,11 @@ class Tests(unittest.IsolatedAsyncioTestCase):
         module('homeassistant.components.http', StaticPathConfig=lambda *a:a)
         module('homeassistant.config_entries',ConfigEntry=object)
         sys.modules['emby_metadata.const'].PLATFORMS=['image','sensor']
-        module('emby_metadata.coordinator',EmbyCoordinator=lambda *a:SimpleNamespace(async_config_entry_first_refresh=AsyncMock()))
+        module('emby_metadata.coordinator',
+               EmbyCoordinator=lambda *a:SimpleNamespace(async_config_entry_first_refresh=AsyncMock(), async_start=Mock(), async_stop=AsyncMock()),
+               EmbySessionsCoordinator=lambda *a:SimpleNamespace(clients={}, data=[], last_update_success=True,
+                   async_register_shutdown=AsyncMock(), async_ensure_data=AsyncMock(), select_interval=Mock(),
+                   async_set_updated_data=Mock(), async_shutdown=AsyncMock()))
         sys.modules['emby_metadata.frontend']=frontend
         spec=importlib.util.spec_from_file_location('emby_metadata',ROOT/'custom_components/emby_metadata/__init__.py')
         integration=importlib.util.module_from_spec(spec);spec.loader.exec_module(integration)
@@ -120,7 +124,8 @@ class Tests(unittest.IsolatedAsyncioTestCase):
         h.config_entries=SimpleNamespace(async_forward_entry_setups=AsyncMock(),async_unload_platforms=AsyncMock(return_value=True))
         await integration.async_setup(h,{})
         for _ in range(2):
-            entry=SimpleNamespace()
+            entry=SimpleNamespace(entry_id='client', data={'protocol':'http','host':'server','port':8096,'api_key':'test'},
+                                  async_on_unload=Mock(), add_update_listener=Mock())
             await integration.async_setup_entry(h,entry)
             await integration.async_unload_entry(h,entry)
         self.assertEqual(r.writes,['create'])
