@@ -27,5 +27,21 @@
     "abort": {
       "already_configured": "Dieser Emby-Client ist bereits konfiguriert."
     }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Abfrageintervalle",
+        "description": "Intervalle in Sekunden (5–300). Änderungen gelten ohne Neustart von Home Assistant. Clients mit demselben Server und API-Schlüssel teilen sich Sitzungsabfragen mit dem kürzesten für ihren aktuellen Zustand erforderlichen Intervall. Kürzere Intervalle erhöhen die Anzahl der Serveranfragen.",
+        "data": {
+          "idle_interval": "Verbunden, keine Wiedergabe (Sekunden)",
+          "playing_interval": "Wiedergabe oder Pause (Sekunden)",
+          "absent_interval": "Client nicht verbunden (Sekunden)"
+        }
+      }
+    },
+    "error": {
+      "invalid_interval": "Geben Sie ganze Zahlen zwischen 5 und 300 Sekunden ein."
+    }
   }
 }

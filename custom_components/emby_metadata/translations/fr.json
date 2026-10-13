@@ -27,5 +27,21 @@
     "abort": {
       "already_configured": "Ce client Emby est déjà configuré."
     }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Délais de vérification",
+        "description": "Délais en secondes (5–300). Les changements s’appliquent sans redémarrer Home Assistant. Les lecteurs utilisant le même serveur et la même clé API partagent les requêtes de sessions au délai le plus court requis par leurs états actuels. Des délais plus courts augmentent les requêtes au serveur.",
+        "data": {
+          "idle_interval": "Connecté, sans lecture (secondes)",
+          "playing_interval": "En lecture ou en pause (secondes)",
+          "absent_interval": "Lecteur absent (secondes)"
+        }
+      }
+    },
+    "error": {
+      "invalid_interval": "Saisissez des nombres entiers entre 5 et 300 secondes."
+    }
   }
 }

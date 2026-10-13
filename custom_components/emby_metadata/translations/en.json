@@ -27,5 +27,21 @@
     "abort": {
       "already_configured": "This Emby client is already configured."
     }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polling intervals",
+        "description": "Intervals in seconds (5–300). Changes apply without restarting Home Assistant. Clients using the same server and API key share session requests at the shortest interval required by their current states. Shorter intervals increase server requests.",
+        "data": {
+          "idle_interval": "Connected, not playing (seconds)",
+          "playing_interval": "Playing or paused (seconds)",
+          "absent_interval": "Client absent (seconds)"
+        }
+      }
+    },
+    "error": {
+      "invalid_interval": "Enter whole numbers between 5 and 300 seconds."
+    }
   }
 }

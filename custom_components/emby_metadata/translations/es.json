@@ -27,5 +27,21 @@
     "abort": {
       "already_configured": "Este cliente de Emby ya está configurado."
     }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Intervalos de consulta",
+        "description": "Intervalos en segundos (5–300). Los cambios se aplican sin reiniciar Home Assistant. Los clientes con el mismo servidor y clave API comparten las consultas de sesiones con el intervalo más corto que requieren sus estados actuales. Los intervalos más cortos aumentan las solicitudes al servidor.",
+        "data": {
+          "idle_interval": "Conectado, sin reproducción (segundos)",
+          "playing_interval": "En reproducción o en pausa (segundos)",
+          "absent_interval": "Cliente ausente (segundos)"
+        }
+      }
+    },
+    "error": {
+      "invalid_interval": "Introduzca números enteros entre 5 y 300 segundos."
+    }
   }
 }
