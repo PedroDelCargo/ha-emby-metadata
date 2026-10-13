@@ -5,6 +5,7 @@ from __future__ import annotations
 import voluptuous as vol
 from aiohttp import ClientError, ClientTimeout
 from homeassistant import config_entries
+from homeassistant.core import callback
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.exceptions import HomeAssistantError
 
@@ -19,6 +20,10 @@ from .const import (
     DEFAULT_PORT,
     DEFAULT_PROTOCOL,
     DOMAIN,
+    POLL_DEFAULTS,
+    MIN_POLL_INTERVAL,
+    MAX_POLL_INTERVAL,
+    polling_options,
 )
 
 
@@ -54,6 +59,12 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle the Emby Metadata config flow."""
 
     VERSION = 1
+
+    @staticmethod
+    @callback
+    def async_get_options_flow(config_entry):
+        """Offer polling intervals without reloading the integration."""
+        return OptionsFlow()
 
     async def async_step_user(self, user_input=None):
         """Collect server connection details and discover Emby clients."""
@@ -120,3 +131,26 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             step_id="device",
             data_schema=vol.Schema({vol.Required(CONF_DEVICE_ID): vol.In(self._devices)}),
         )
+
+
+class OptionsFlow(config_entries.OptionsFlow):
+    """Configure polling intervals in seconds."""
+
+    async def async_step_init(self, user_input=None):
+        values = polling_options(self.config_entry.options)
+        schema = vol.Schema({
+            vol.Required(key, default=values[key]): vol.All(
+                int, vol.Range(min=MIN_POLL_INTERVAL, max=MAX_POLL_INTERVAL)
+            ) for key in POLL_DEFAULTS
+        })
+        errors = {}
+        if user_input is not None:
+            try:
+                validated = schema(user_input)
+                if any(isinstance(value, bool) for value in validated.values()):
+                    raise vol.Invalid("Expected an integer")
+            except vol.Invalid:
+                errors["base"] = "invalid_interval"
+            else:
+                return self.async_create_entry(title="", data=validated)
+        return self.async_show_form(step_id="init", data_schema=schema, errors=errors)
