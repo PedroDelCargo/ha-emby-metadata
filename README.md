@@ -59,27 +59,35 @@ Series artwork with episode-specific information. The poster is hidden in this e
 
 ## Installation
 
+### Install through HACS (recommended)
+
+1. Open **HACS** in Home Assistant and search for **Emby Metadata**.
+2. Open the integration and download it.
+3. Restart Home Assistant, then configure your player as described below.
+
 ### Before configuring a player
 
 **The target Emby player must be active and connected to your Emby server to be detected.** Open the Emby application on that device, sign in and leave it open during setup. Powering on the device alone is not enough. Detection uses the server's active client sessions, not a list of all previously used devices.
 
 If the player is missing, start playback briefly, then go back to the server connection step and submit it again to refresh the player list. Repeat this preparation when adding another player.
 
-### Install and configure
+### Configure the player
 
-1. Copy `custom_components/emby_metadata` into your Home Assistant `custom_components` directory.
-2. Restart Home Assistant.
-3. Open **Settings → Devices & services → Add integration → Emby Metadata**.
-4. Enter your Emby protocol, host, port and API key, then select the client to monitor. Start the client if it is not listed.
-5. The card resource is registered automatically when resources are managed through the UI. Reload the browser after restarting. For YAML-managed resources, add this URL as a **JavaScript module**:
+1. Open **Settings → Devices & services → Add integration → Emby Metadata**.
+2. Enter your Emby protocol, host, port and API key, then select the client to monitor. Start the client if it is not listed.
+3. The card resource is registered automatically when resources are managed through the UI. Reload the browser after restarting. For YAML-managed resources, add this URL as a **JavaScript module**:
 
 ```text
-/api/emby_metadata/emby-metadata-card.js?v=1.2.14
+/api/emby_metadata/emby-metadata-card.js?v=1.2.15
 ```
 
 In storage mode, the integration creates or updates its resource and removes duplicate entries for its exact endpoint. Existing manual entries at that endpoint are reused. Other URLs are left untouched. YAML resources still require manual updates, using the same URL and `type: module`. Removing or reloading an Emby client keeps the shared card resource.
 
-`https://github.com/PedroDelCargo/ha-emby-metadata` can be installed as a HACS custom repository of type **Integration**. Restart Home Assistant and follow steps 3–5. The project is not yet in the default HACS catalog.
+### Manual installation (alternative)
+
+1. Download the **Source code (zip)** archive from the [latest release](https://github.com/PedroDelCargo/ha-emby-metadata/releases/latest) and extract it.
+2. Copy the archive’s `custom_components/emby_metadata` folder into your Home Assistant `custom_components` directory.
+3. Restart Home Assistant, then follow **Configure the player** above.
 
 ## Configuration
 
@@ -154,10 +162,6 @@ Tested on Home Assistant Core **2026.9.4**, frontend **20260826.7**. Earlier ver
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) and [TRANSLATIONS.md](TRANSLATIONS.md). Users do not need to build the bundled JavaScript. The French version of this guide is available in [INSTALLATION.md](INSTALLATION.md).
-
-## Publication status
-
-Available as a HACS custom repository. [Default catalog submission](https://github.com/hacs/default/pull/11725) is awaiting review.
 
 ## License
 

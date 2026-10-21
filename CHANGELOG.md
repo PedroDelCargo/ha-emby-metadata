@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.15 — 2026-10-21
+
+- Make installation from the default HACS catalog the recommended method.
+- Retain manual installation as an alternative and remove outdated custom-repository and pending-review instructions.
+- Integration and card behavior are unchanged.
+
 ## 1.2.14 — 2026-10-13
 
 - Check connected idle clients every 5 seconds by default instead of 30.

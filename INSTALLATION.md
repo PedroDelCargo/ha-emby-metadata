@@ -59,27 +59,35 @@ Illustrations de la série et informations propres à l’épisode. L’affiche 
 
 ## Installation
 
+### Installer depuis HACS (recommandé)
+
+1. Ouvrez **HACS** dans Home Assistant et recherchez **Emby Metadata**.
+2. Ouvrez l’intégration et téléchargez-la.
+3. Redémarrez Home Assistant, puis configurez votre lecteur comme indiqué ci-dessous.
+
 ### Avant de configurer un lecteur
 
 **Le lecteur Emby ciblé doit être actif et connecté au serveur Emby pour être détecté.** Ouvrez l’application Emby sur cet appareil, connectez-vous et laissez-la ouverte pendant la configuration. Allumer uniquement l’appareil ne suffit pas. La détection utilise les sessions actives du serveur, et non la liste de tous les appareils utilisés auparavant.
 
 Si le lecteur n’apparaît pas, lancez brièvement une lecture, puis revenez à l’étape de connexion au serveur et validez-la à nouveau pour actualiser la liste. Répétez cette préparation pour chaque lecteur supplémentaire.
 
-### Installer et configurer
+### Configurer le lecteur
 
-1. Copiez `custom_components/emby_metadata` dans le dossier `custom_components` de Home Assistant.
-2. Redémarrez Home Assistant.
-3. Ouvrez **Paramètres → Appareils et services → Ajouter une intégration → Emby Metadata**.
-4. Renseignez le protocole, l’adresse du serveur, le port et la clé API Emby, puis sélectionnez le client à suivre. Démarrez le client s’il n’apparaît pas dans la liste.
-5. La ressource de la carte est enregistrée automatiquement lorsque les ressources sont gérées par l’interface. Rechargez le navigateur après le redémarrage. Pour les ressources gérées en YAML, ajoutez cette URL comme **module JavaScript** :
+1. Ouvrez **Paramètres → Appareils et services → Ajouter une intégration → Emby Metadata**.
+2. Renseignez le protocole, l’adresse du serveur, le port et la clé API Emby, puis sélectionnez le client à suivre. Démarrez le client s’il n’apparaît pas dans la liste.
+3. La ressource de la carte est enregistrée automatiquement lorsque les ressources sont gérées par l’interface. Rechargez le navigateur après le redémarrage. Pour les ressources gérées en YAML, ajoutez cette URL comme **module JavaScript** :
 
 ```text
-/api/emby_metadata/emby-metadata-card.js?v=1.2.14
+/api/emby_metadata/emby-metadata-card.js?v=1.2.15
 ```
 
 En mode stockage, l’intégration crée ou met à jour sa ressource et supprime les doublons correspondant exactement à son adresse. Les entrées manuelles existantes à cette adresse sont réutilisées. Les autres URL ne sont pas modifiées. Les ressources YAML nécessitent toujours une mise à jour manuelle, avec la même URL et `type: module`. Supprimer ou recharger un client Emby conserve la ressource partagée de la carte.
 
-`https://github.com/PedroDelCargo/ha-emby-metadata` peut être installé comme dépôt personnalisé HACS de type **Intégration**. Redémarrez Home Assistant et suivez les étapes 3 à 5. Le projet ne figure pas encore dans le catalogue HACS par défaut.
+### Installation manuelle (alternative)
+
+1. Téléchargez l’archive **Source code (zip)** de la [dernière version](https://github.com/PedroDelCargo/ha-emby-metadata/releases/latest) et extrayez-la.
+2. Copiez le dossier `custom_components/emby_metadata` de l’archive dans le dossier `custom_components` de Home Assistant.
+3. Redémarrez Home Assistant, puis suivez la section **Configurer le lecteur** ci-dessus.
 
 ## Configuration
 
@@ -154,10 +162,6 @@ Testé avec Home Assistant Core **2026.9.4**, interface **20260826.7**. Les vers
 ## Contribuer
 
 Consultez [CONTRIBUTING.md](CONTRIBUTING.md) et [TRANSLATIONS.md](TRANSLATIONS.md). Les utilisateurs n’ont pas besoin de générer le JavaScript fourni. La version anglaise de ce guide est disponible dans [README.md](README.md).
-
-## État de publication
-
-Disponible comme dépôt personnalisé HACS. La [demande d’ajout au catalogue par défaut](https://github.com/hacs/default/pull/11725) est en attente d’examen.
 
 ## Licence
 
