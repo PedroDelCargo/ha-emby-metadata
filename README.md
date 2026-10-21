@@ -10,7 +10,7 @@ A Home Assistant integration for media playing on an Emby client, with an option
 
 <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-synopsis.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-synopsis.jpg" alt="Movie on tablet with poster and synopsis" width="640"></a>
 
-[Screenshots](#screenshots) · [Installation](#installation) · [Card configuration](#configuration)
+[Screenshots](#screenshots) · [Installation](#installation) · [Lovelace card configuration](#lovelace-card-configuration)
 
 ## Features
 
@@ -89,7 +89,7 @@ In storage mode, the integration creates or updates its resource and removes dup
 2. Copy the archive’s `custom_components/emby_metadata` folder into your Home Assistant `custom_components` directory.
 3. Restart Home Assistant, then follow **Configure the player** above.
 
-## Configuration
+## Lovelace card configuration
 
 Choose the player's sensor and toggle the poster, video, audio, subtitles and cast directly in Home Assistant's visual card editor.
 

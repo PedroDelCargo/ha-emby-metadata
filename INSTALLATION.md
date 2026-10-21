@@ -10,7 +10,7 @@ Une intégration Home Assistant pour les médias en cours de lecture sur un clie
 
 <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-synopsis.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-synopsis.jpg" alt="Film sur tablette avec affiche et synopsis" width="640"></a>
 
-[Captures d’écran](#captures-décran) · [Installation](#installation) · [Configuration de la carte](#configuration)
+[Captures d’écran](#captures-décran) · [Installation](#installation) · [Configuration de la carte Lovelace](#configuration-de-la-carte-lovelace)
 
 ## Fonctionnalités
 
@@ -89,7 +89,7 @@ En mode stockage, l’intégration crée ou met à jour sa ressource et supprime
 2. Copiez le dossier `custom_components/emby_metadata` de l’archive dans le dossier `custom_components` de Home Assistant.
 3. Redémarrez Home Assistant, puis suivez la section **Configurer le lecteur** ci-dessus.
 
-## Configuration
+## Configuration de la carte Lovelace
 
 Choisissez le capteur du lecteur et activez ou désactivez l’affiche, la vidéo, l’audio, les sous-titres et la distribution directement dans l’éditeur visuel de carte de Home Assistant.
 
