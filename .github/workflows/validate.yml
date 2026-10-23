@@ -26,6 +26,9 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: node tests/test_frontend.cjs
       - run: node tests/test_i18n.cjs
+      - run: node tests/test_editor_unit.cjs
+      - run: node tests/test_player_unit.cjs
+      - run: node tests/test_player_browser.cjs
   hassfest:
     runs-on: ubuntu-latest
     steps:
