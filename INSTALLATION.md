@@ -8,7 +8,7 @@ Une intégration Home Assistant pour les médias en cours de lecture sur un clie
 
 <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/custom_components/emby_metadata/brand/icon.png"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/custom_components/emby_metadata/brand/icon.png" alt="Emby Metadata" width="128"></a>
 
-<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-synopsis.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-synopsis.jpg" alt="Film sur tablette avec affiche et synopsis" width="640"></a>
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet.png"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet.png" alt="Film sur tablette avec affiche et synopsis" width="640"></a>
 
 [Captures d’écran](#captures-décran) · [Installation](#installation) · [Configuration de la carte Lovelace](#configuration-de-la-carte-lovelace)
 
@@ -16,6 +16,7 @@ Une intégration Home Assistant pour les médias en cours de lecture sur un clie
 
 - Films, épisodes de séries et vidéos personnelles, selon les métadonnées disponibles dans Emby.
 - Présentation adaptative à 768 px, affiche facultative, arrière-plan proportionnel et logo du titre avec repli sur le texte.
+- Commandes de lecture facultatives, temps écoulé/restant et progression, associés automatiquement au lecteur Emby correspondant dans Home Assistant.
 - Synopsis, note, durée et informations vidéo, audio et sous-titres.
 - Réalisateur et jusqu’à cinq acteurs, avec photos et portraits de remplacement.
 - Sections animées : ouvrir une section referme les autres.
@@ -29,33 +30,23 @@ Captures réelles de Home Assistant sur mobile et tablette. Les exemples utilise
 
 ### Mobile
 
-<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-small.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-small.jpg" alt="Carte mobile avec synopsis réduit" width="280"></a>
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-mobile-synopsis.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-mobile-synopsis.jpg" alt="Synopsis et lecteur" width="280"></a>
 
-<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-actors.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-actors.jpg" alt="Carte mobile avec réalisateur et acteurs affichés" width="280"></a>
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-mobile-technical.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-mobile-technical.jpg" alt="Informations techniques et lecteur" width="280"></a>
 
-Synopsis compact et distribution dépliable, avec noms et rôles en surimpression sur les portraits.
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-mobile-cast.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-mobile-cast.jpg" alt="Distribution et lecteur" width="280"></a>
 
-**Autres vues mobiles : synopsis complet et informations techniques**
+### Tablette
 
-<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-full.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-full.jpg" alt="Carte mobile avec synopsis complet" width="280"></a>
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet-technical.png"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet-technical.png" alt="Informations techniques" width="640"></a>
 
-<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-technical-data.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-technical-data.jpg" alt="Carte mobile avec informations vidéo, audio et sous-titres" width="280"></a>
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet-cast.png"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet-cast.png" alt="Distribution" width="640"></a>
+
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet-no-poster.png"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet-no-poster.png" alt="Lecteur sans affiche" width="640"></a>
 
 ### Épisodes de séries
 
-<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-tv-show.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-tv-show.jpg" alt="Épisode avec logo de série, saison, numéro, titre et synopsis" width="640"></a>
-
-Illustrations de la série et informations propres à l’épisode. L’affiche est masquée dans cet exemple.
-
-**Autres vues sur tablette : informations techniques et distribution**
-
-**Vidéo, audio et sous-titres, avec l’affiche activée**
-
-<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-technical-data.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-technical-data.jpg" alt="Carte tablette avec informations techniques" width="640"></a>
-
-**Réalisateur et acteurs, avec l’affiche masquée**
-
-<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-actors.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-actors.jpg" alt="Carte tablette avec réalisateur et acteurs" width="280"></a>
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-tv-show.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-tv-show.jpg" alt="Épisode de série" width="640"></a>
 
 ## Installation
 
@@ -78,7 +69,7 @@ Si le lecteur n’apparaît pas, lancez brièvement une lecture, puis revenez à
 3. La ressource de la carte est enregistrée automatiquement lorsque les ressources sont gérées par l’interface. Rechargez le navigateur après le redémarrage. Pour les ressources gérées en YAML, ajoutez cette URL comme **module JavaScript** :
 
 ```text
-/api/emby_metadata/emby-metadata-card.js?v=1.2.15
+/api/emby_metadata/emby-metadata-card.js?v=2.0.0
 ```
 
 En mode stockage, l’intégration crée ou met à jour sa ressource et supprime les doublons correspondant exactement à son adresse. Les entrées manuelles existantes à cette adresse sont réutilisées. Les autres URL ne sont pas modifiées. Les ressources YAML nécessitent toujours une mise à jour manuelle, avec la même URL et `type: module`. Supprimer ou recharger un client Emby conserve la ressource partagée de la carte.
@@ -91,7 +82,7 @@ En mode stockage, l’intégration crée ou met à jour sa ressource et supprime
 
 ## Configuration de la carte Lovelace
 
-Choisissez le capteur du lecteur et activez ou désactivez l’affiche, la vidéo, l’audio, les sous-titres et la distribution directement dans l’éditeur visuel de carte de Home Assistant.
+Choisissez le capteur du lecteur et activez ou désactivez le lecteur, l’affiche, la vidéo, l’audio, les sous-titres et la distribution directement dans l’éditeur visuel de carte de Home Assistant.
 
 <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration.jpg" alt="Éditeur visuel Home Assistant de la carte Emby Metadata" width="280"></a>
 
@@ -105,9 +96,20 @@ show_video: true
 show_audio: true
 show_subtitles: true
 show_cast: true
+show_player: false
 ```
 
 Remplacez l’entité de l’exemple par votre capteur. Ces options sont aussi disponibles dans l’éditeur visuel. L’affiche concerne la présentation horizontale. Les sections vides sont masquées. Les titres, synopsis, genres et rôles restent dans la langue fournie par Emby.
+
+### Lecteur facultatif
+
+Activez **Afficher le lecteur et la progression** dans l’éditeur visuel (`show_player: true` en YAML). Cette option est désactivée par défaut, y compris après une mise à jour. Les configurations de cartes existantes continuent de fonctionner.
+
+L’intégration native **Emby** doit fournir une entité `media_player` correspondante dans Home Assistant. Emby Metadata l’associe automatiquement grâce à l’identifiant du client Emby, même si l’entité a été renommée. Aucune sélection supplémentaire n’est nécessaire. Sans entité correspondante, le bloc lecteur est masqué ; les métadonnées et les images continuent de fonctionner indépendamment.
+
+Le lecteur se place entre le synopsis et les informations techniques. Quelle que soit la taille de l’écran, le temps écoulé est à gauche, les commandes Précédent / Arrêter / Lecture-Pause / Suivant sont centrées et le temps restant est à droite. La progression se superpose au séparateur inférieur avec la couleur d’accentuation du thème Home Assistant. Elle n’est pas interactive. Précédent et Suivant concernent les éléments de la file de lecture du client, et non des sauts de quelques secondes. Les commandes dépendent des capacités du client et sont désactivées lorsqu’elles sont indisponibles. Les temps inconnus sont représentés par un tiret.
+
+Le temps affiché avance localement pendant la lecture et se recale sur les informations reçues de Home Assistant. Cela n’ajoute aucune requête périodique à Emby. La note est en haut à droite, la durée totale est alignée à gauche au-dessus du synopsis et l’image du titre est limitée à la moitié de la largeur de la carte.
 
 ## Créer votre propre tableau de bord
 

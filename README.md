@@ -8,7 +8,7 @@ A Home Assistant integration for media playing on an Emby client, with an option
 
 <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/custom_components/emby_metadata/brand/icon.png"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/custom_components/emby_metadata/brand/icon.png" alt="Emby Metadata" width="128"></a>
 
-<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-synopsis.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-synopsis.jpg" alt="Movie on tablet with poster and synopsis" width="640"></a>
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet.png"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet.png" alt="Movie on tablet with poster and synopsis" width="640"></a>
 
 [Screenshots](#screenshots) · [Installation](#installation) · [Lovelace card configuration](#lovelace-card-configuration)
 
@@ -16,6 +16,7 @@ A Home Assistant integration for media playing on an Emby client, with an option
 
 - Movies, TV episodes and personal videos, using metadata available in Emby.
 - Responsive layout at 768 px, optional poster, proportional backdrop and title logo with text fallback.
+- Optional playback controls, elapsed/remaining time and progress, linked automatically to the matching Home Assistant Emby player.
 - Synopsis, rating, runtime, video, audio and subtitle information.
 - Director and up to five actors with photos and fallback portraits.
 - Animated sections: opening one collapses the others.
@@ -29,33 +30,23 @@ Real screenshots from Home Assistant on mobile and tablet. The examples use the 
 
 ### Mobile
 
-  <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-small.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-small.jpg" alt="Mobile card with a collapsed synopsis" width="280"></a>
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-mobile-synopsis.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-mobile-synopsis.jpg" alt="Synopsis and player" width="280"></a>
 
-  <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-actors.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-actors.jpg" alt="Mobile card with director and cast expanded" width="280"></a>
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-mobile-technical.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-mobile-technical.jpg" alt="Technical information and player" width="280"></a>
 
-Compact synopsis and expandable cast, with names and roles overlaid on portraits.
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-mobile-cast.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-mobile-cast.jpg" alt="Cast and player" width="280"></a>
 
-**More mobile views: full synopsis and technical information**
+### Tablet
 
-  <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-full.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-synopsis-full.jpg" alt="Mobile card with the full synopsis expanded" width="280"></a>
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet-technical.png"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet-technical.png" alt="Technical information" width="640"></a>
 
-  <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-technical-data.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/mobile-technical-data.jpg" alt="Mobile card showing video, audio and subtitle information" width="280"></a>
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet-cast.png"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet-cast.png" alt="Cast" width="640"></a>
+
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet-no-poster.png"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/player-tablet-no-poster.png" alt="Player without poster" width="640"></a>
 
 ### TV episodes
 
-<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-tv-show.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-tv-show.jpg" alt="TV episode with series logo, season and episode number, episode title and synopsis" width="640"></a>
-
-Series artwork with episode-specific information. The poster is hidden in this example.
-
-**More tablet views: technical information and cast**
-
-**Video, audio and subtitles, with the poster enabled**
-
-<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-technical-data.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-technical-data.jpg" alt="Tablet card with technical information expanded" width="640"></a>
-
-**Director and cast, with the poster hidden**
-
-<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-actors.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-actors.jpg" alt="Tablet card with director and cast expanded" width="280"></a>
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-tv-show.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/tablet-tv-show.jpg" alt="TV episode" width="640"></a>
 
 ## Installation
 
@@ -78,7 +69,7 @@ If the player is missing, start playback briefly, then go back to the server con
 3. The card resource is registered automatically when resources are managed through the UI. Reload the browser after restarting. For YAML-managed resources, add this URL as a **JavaScript module**:
 
 ```text
-/api/emby_metadata/emby-metadata-card.js?v=1.2.15
+/api/emby_metadata/emby-metadata-card.js?v=2.0.0
 ```
 
 In storage mode, the integration creates or updates its resource and removes duplicate entries for its exact endpoint. Existing manual entries at that endpoint are reused. Other URLs are left untouched. YAML resources still require manual updates, using the same URL and `type: module`. Removing or reloading an Emby client keeps the shared card resource.
@@ -91,7 +82,7 @@ In storage mode, the integration creates or updates its resource and removes dup
 
 ## Lovelace card configuration
 
-Choose the player's sensor and toggle the poster, video, audio, subtitles and cast directly in Home Assistant's visual card editor.
+Choose the player's sensor and toggle the player, poster, video, audio, subtitles and cast directly in Home Assistant's visual card editor.
 
 <a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration.jpg" alt="Home Assistant visual editor for the Emby Metadata card" width="280"></a>
 
@@ -105,9 +96,20 @@ show_video: true
 show_audio: true
 show_subtitles: true
 show_cast: true
+show_player: false
 ```
 
 Replace the example entity with your sensor. These options are also available in the visual editor. Poster display applies to horizontal layout. Empty sections are hidden. Media titles, plots, genres and roles remain in the language provided by Emby.
+
+### Optional player
+
+Enable **Show player controls and progress** in the visual card editor (`show_player: true` in YAML). This option is off by default, including after an upgrade. Existing card configurations continue to work.
+
+The built-in **Emby** integration must provide a matching `media_player` entity in Home Assistant. Emby Metadata links it automatically using the Emby client identifier, including when the entity has been renamed. No extra player selection is needed. If no matching entity exists, the player block is hidden; metadata and images still work independently.
+
+The player appears between the synopsis and technical information. On every screen size, elapsed time is on the left, Previous / Stop / Play-Pause / Next are centered, and remaining time is on the right. The progress indicator overlays the lower separator using the Home Assistant theme accent color. It is read-only. Previous and Next refer to items in the client's playback queue, not jumps of a few seconds. Commands depend on the client's capabilities and are disabled when unavailable. Unknown times are shown as a dash.
+
+The displayed time advances locally while playing and is corrected by updates from Home Assistant. This adds no periodic requests to Emby. The rating is at the top right, total duration is left-aligned above the synopsis, and the title image is limited to half the card width.
 
 ## Build your own dashboard
 

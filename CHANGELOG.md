@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.0 — 2026-10-23
+
+- Add optional Previous, Stop, Play/Pause and Next controls, automatically linked to the matching native Home Assistant Emby player.
+- Show elapsed and remaining time with locally smoothed progress and no additional Emby polling.
+- Keep the same player layout on mobile and tablet, with progress in the theme accent color.
+- Move the rating to the top right, retain runtime on the left and limit title artwork to half the card width.
+- Compact the visual card editor and place the player option immediately after the entity.
+- Add new mobile and tablet screenshots and player instructions in English and French.
+- Existing card configurations remain compatible; playback controls are disabled by default.
+
 ## 1.2.15 — 2026-10-21
 
 - Make installation from the default HACS catalog the recommended method.
