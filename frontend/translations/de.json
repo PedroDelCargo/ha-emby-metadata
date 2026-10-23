@@ -23,5 +23,15 @@
   "hours": "Std.",
   "minutes": "Min.",
   "channels": "Kanäle",
-  "mono": "Mono"
+  "mono": "Mono",
+  "show_player": "Player und Fortschritt anzeigen",
+  "playback_progress": "Wiedergabefortschritt",
+  "elapsed_time": "Verstrichene Zeit",
+  "remaining_time": "Verbleibende Zeit",
+  "previous_track": "Zurück",
+  "stop": "Stopp",
+  "pause": "Pause",
+  "play": "Wiedergabe",
+  "next_track": "Weiter",
+  "player_command_failed": "Der Befehl ist fehlgeschlagen. Bitte erneut versuchen."
 }

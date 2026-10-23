@@ -23,5 +23,15 @@
   "hours": "h",
   "minutes": "min",
   "channels": "can.",
-  "mono": "Mono"
+  "mono": "Mono",
+  "show_player": "Afficher le lecteur et la progression",
+  "playback_progress": "Progression de la lecture",
+  "elapsed_time": "Temps écoulé",
+  "remaining_time": "Temps restant",
+  "previous_track": "Précédent",
+  "stop": "Arrêter",
+  "pause": "Pause",
+  "play": "Lecture",
+  "next_track": "Suivant",
+  "player_command_failed": "La commande a échoué. Réessayez."
 }

@@ -23,5 +23,15 @@
   "hours": "h",
   "minutes": "min",
   "channels": "canales",
-  "mono": "Mono"
+  "mono": "Mono",
+  "show_player": "Mostrar controles y progreso",
+  "playback_progress": "Progreso de reproducción",
+  "elapsed_time": "Tiempo transcurrido",
+  "remaining_time": "Tiempo restante",
+  "previous_track": "Anterior",
+  "stop": "Detener",
+  "pause": "Pausa",
+  "play": "Reproducir",
+  "next_track": "Siguiente",
+  "player_command_failed": "El comando ha fallado. Inténtalo de nuevo."
 }

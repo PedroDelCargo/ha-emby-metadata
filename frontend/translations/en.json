@@ -23,5 +23,15 @@
   "hours": "h",
   "minutes": "min",
   "channels": "ch",
-  "mono": "Mono"
+  "mono": "Mono",
+  "show_player": "Show player controls and progress",
+  "playback_progress": "Playback progress",
+  "elapsed_time": "Elapsed time",
+  "remaining_time": "Remaining time",
+  "previous_track": "Previous",
+  "stop": "Stop",
+  "pause": "Pause",
+  "play": "Play",
+  "next_track": "Next",
+  "player_command_failed": "The command failed. Please try again."
 }
