@@ -3,13 +3,14 @@
 from __future__ import annotations
 
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import callback
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.entity_registry import async_get as async_get_entity_registry
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import CONF_DEVICE_NAME, DOMAIN
+from .const import CONF_DEVICE_ID, CONF_DEVICE_NAME, DOMAIN
 from .coordinator import EmbyCoordinator
 from .metadata import people, hdr_value
 
@@ -96,6 +97,19 @@ class EmbyNowPlayingSensor(CoordinatorEntity[EmbyCoordinator], SensorEntity):
         self._attr_name = "Now Playing"
         self._attr_device_info = device_info(entry, coordinator)
 
+    async def async_added_to_hass(self) -> None:
+        await super().async_added_to_hass()
+
+        @callback
+        def registry_changed(event):
+            # Resolve again after a player is created, renamed or removed.
+            if event.data.get("entity_id", "").startswith("media_player."):
+                self.async_write_ha_state()
+
+        self.async_on_remove(
+            self.hass.bus.async_listen("entity_registry_updated", registry_changed)
+        )
+
     @property
     def native_value(self) -> str:
         item = self.coordinator.data.get("NowPlayingItem")
@@ -112,9 +126,19 @@ class EmbyNowPlayingSensor(CoordinatorEntity[EmbyCoordinator], SensorEntity):
                 "image", DOMAIN, f"{self.entry.entry_id}_{suffix}"
             )
 
+        # pyEmby keys native HA players by "DeviceId.Client", not DeviceId alone.
+        device_id = self.entry.data[CONF_DEVICE_ID]
+        client = session.get("Client")
+        player_entity = registry.async_get_entity_id(
+            "media_player", "emby", f"{device_id}.{client}"
+        ) if client else None
+        if player_entity is None:
+            player_entity = registry.async_get_entity_id("media_player", "emby", device_id)
+
         attrs = {
             "device_name": session.get("DeviceName"),
             "device_id": session.get("DeviceId"),
+            "media_player_entity": player_entity,
             "client": session.get("Client"),
             "application_version": session.get("ApplicationVersion"),
             "poster_entity": entity_id("poster"),
