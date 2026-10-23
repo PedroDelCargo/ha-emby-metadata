@@ -84,7 +84,7 @@ En mode stockage, l’intégration crée ou met à jour sa ressource et supprime
 
 Choisissez le capteur du lecteur et activez ou désactivez le lecteur, l’affiche, la vidéo, l’audio, les sous-titres et la distribution directement dans l’éditeur visuel de carte de Home Assistant.
 
-<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration.jpg" alt="Éditeur visuel Home Assistant de la carte Emby Metadata" width="280"></a>
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration-player.png"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration-player.png" alt="Éditeur visuel Home Assistant de la carte Emby Metadata" width="640"></a>
 
 Vous pouvez également configurer la carte en YAML :
 
@@ -106,10 +106,6 @@ Remplacez l’entité de l’exemple par votre capteur. Ces options sont aussi d
 Activez **Afficher le lecteur et la progression** dans l’éditeur visuel (`show_player: true` en YAML). Cette option est désactivée par défaut, y compris après une mise à jour. Les configurations de cartes existantes continuent de fonctionner.
 
 L’intégration native **Emby** doit fournir une entité `media_player` correspondante dans Home Assistant. Emby Metadata l’associe automatiquement grâce à l’identifiant du client Emby, même si l’entité a été renommée. Aucune sélection supplémentaire n’est nécessaire. Sans entité correspondante, le bloc lecteur est masqué ; les métadonnées et les images continuent de fonctionner indépendamment.
-
-Le lecteur se place entre le synopsis et les informations techniques. Quelle que soit la taille de l’écran, le temps écoulé est à gauche, les commandes Précédent / Arrêter / Lecture-Pause / Suivant sont centrées et le temps restant est à droite. La progression se superpose au séparateur inférieur avec la couleur d’accentuation du thème Home Assistant. Elle n’est pas interactive. Précédent et Suivant concernent les éléments de la file de lecture du client, et non des sauts de quelques secondes. Les commandes dépendent des capacités du client et sont désactivées lorsqu’elles sont indisponibles. Les temps inconnus sont représentés par un tiret.
-
-Le temps affiché avance localement pendant la lecture et se recale sur les informations reçues de Home Assistant. Cela n’ajoute aucune requête périodique à Emby. La note est en haut à droite, la durée totale est alignée à gauche au-dessus du synopsis et l’image du titre est limitée à la moitié de la largeur de la carte.
 
 ## Créer votre propre tableau de bord
 

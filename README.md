@@ -84,7 +84,7 @@ In storage mode, the integration creates or updates its resource and removes dup
 
 Choose the player's sensor and toggle the player, poster, video, audio, subtitles and cast directly in Home Assistant's visual card editor.
 
-<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration.jpg"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration.jpg" alt="Home Assistant visual editor for the Emby Metadata card" width="280"></a>
+<a href="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration-player.png"><img src="https://raw.githubusercontent.com/PedroDelCargo/ha-emby-metadata/main/docs/screenshots/configuration-player.png" alt="Home Assistant visual editor for the Emby Metadata card" width="640"></a>
 
 You can also configure the card in YAML:
 
@@ -106,10 +106,6 @@ Replace the example entity with your sensor. These options are also available in
 Enable **Show player controls and progress** in the visual card editor (`show_player: true` in YAML). This option is off by default, including after an upgrade. Existing card configurations continue to work.
 
 The built-in **Emby** integration must provide a matching `media_player` entity in Home Assistant. Emby Metadata links it automatically using the Emby client identifier, including when the entity has been renamed. No extra player selection is needed. If no matching entity exists, the player block is hidden; metadata and images still work independently.
-
-The player appears between the synopsis and technical information. On every screen size, elapsed time is on the left, Previous / Stop / Play-Pause / Next are centered, and remaining time is on the right. The progress indicator overlays the lower separator using the Home Assistant theme accent color. It is read-only. Previous and Next refer to items in the client's playback queue, not jumps of a few seconds. Commands depend on the client's capabilities and are disabled when unavailable. Unknown times are shown as a dash.
-
-The displayed time advances locally while playing and is corrected by updates from Home Assistant. This adds no periodic requests to Emby. The rating is at the top right, total duration is left-aligned above the synopsis, and the title image is limited to half the card width.
 
 ## Build your own dashboard
 
