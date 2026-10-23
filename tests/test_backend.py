@@ -215,6 +215,34 @@ class Tests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(attrs['season_number'],0)
         self.assertEqual(attrs['actors'][0]['image_entity'],'image.renamed_test_actor_1')
 
+    def test_player_registry_mapping(self):
+        c=Coordinator(); c.data={}
+        entity=sensor.EmbyNowPlayingSensor(c,ENTRY)
+        players={('media_player','emby','device'):'media_player.renamed_shield'}
+        entity.hass=types.SimpleNamespace(async_get_entity_id=lambda *key:players.get(key))
+        self.assertEqual(entity.extra_state_attributes['media_player_entity'],'media_player.renamed_shield')
+        players[('media_player','emby','device')]='media_player.new_name'
+        self.assertEqual(entity.extra_state_attributes['media_player_entity'],'media_player.new_name')
+        players.clear()
+        self.assertNotIn('media_player_entity',entity.extra_state_attributes)
+        players[('media_player','other','device')]='media_player.wrong'
+        self.assertNotIn('media_player_entity',entity.extra_state_attributes)
+
+    def test_native_player_composite_identifier(self):
+        c=Coordinator(); c.data={'Client':'AndroidTv'}
+        entry=types.SimpleNamespace(entry_id='test',data={**ENTRY.data,'device_id':'df634f5c781883d9'})
+        entity=sensor.EmbyNowPlayingSensor(c,entry)
+        players={('media_player','emby','df634f5c781883d9.AndroidTv'):'media_player.shield_renamed'}
+        entity.hass=types.SimpleNamespace(async_get_entity_id=lambda *key:players.get(key))
+        self.assertEqual(entity.extra_state_attributes['media_player_entity'],'media_player.shield_renamed')
+        c.data['Client']='DifferentApp'
+        self.assertNotIn('media_player_entity',entity.extra_state_attributes)
+        c.data['Client']='AndroidTv'
+        players[('media_player','emby','df634f5c781883d9.AndroidTv')]='media_player.another_name'
+        self.assertEqual(entity.extra_state_attributes['media_player_entity'],'media_player.another_name')
+        players.clear()
+        self.assertNotIn('media_player_entity',entity.extra_state_attributes)
+
     async def test_image_cache_changes_only_with_source(self):
         c=Coordinator(); c.data={'NowPlayingItem':metadata.normalize_item(EPISODE,series=SERIES)}
         calls=[]
